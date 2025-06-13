@@ -84,7 +84,17 @@ function App() {
 
   // Debug: Log when pizzas data changes
   useEffect(() => {
-    console.log('Pizzas data:', pizzas);
+    console.log('Pizzas data loaded:', pizzas?.length || 0, 'items');
+    console.log('First pizza item:', pizzas?.[0]);
+  }, []);
+
+  // Debug: Log when component mounts
+  useEffect(() => {
+    console.log('App component mounted');
+    setTimeout(() => {
+      const allSections = document.querySelectorAll('section[id]');
+      console.log('All sections after mount:', Array.from(allSections).map(s => s.id));
+    }, 1000);
   }, []);
 
   // =================== MEMOIZED VALUES ===================
@@ -359,17 +369,23 @@ function App() {
   );
 
   const renderMenuSection = useCallback((id, title, description, items, subTitle) => {
-    console.log(`Rendering section: ${id} with ${items?.length || 0} items`); // Debug log
+    console.log(`🍕 Rendering section: ${id} with ${items?.length || 0} items`);
+    if (id === 'pizza') {
+      console.log('🍕 Pizza section items:', items);
+    }
+    
     return (
       <section key={id} id={id} className='scroll-mt-[6.5rem] mb-8'>
-        <MenuSection
-          title={title}
-          description={description}
-          subTitle={subTitle}
-          items={items}
-          bgColor='bg-orange-500'
-          onAddToOrder={memoizedAddItem}
-        />
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <MenuSection
+            title={title}
+            description={description}
+            subTitle={subTitle}
+            items={items}
+            bgColor='bg-orange-500'
+            onAddToOrder={memoizedAddItem}
+          />
+        </div>
       </section>
     );
   }, [memoizedAddItem]);

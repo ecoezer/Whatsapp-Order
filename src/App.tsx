@@ -354,21 +354,21 @@ function App() {
   );
 
   const renderMenuSection = useCallback((id, title, description, items, subTitle) => (
-    <div key={id} id={id} className='scroll-mt-[6.5rem]'>
+    <section key={id} id={id} className='scroll-mt-[6.5rem] mb-8'>
       <MenuSection
         title={title}
         description={description}
         subTitle={subTitle}
         items={items}
-        bgColor='bg-orange-500' // Modern orange color for all sections
+        bgColor='bg-orange-500'
         onAddToOrder={memoizedAddItem}
       />
-    </div>
+    </section>
   ), [memoizedAddItem]);
 
   // =================== MAIN RENDER ===================
   return (
-    <div className='min-h-dvh bg-gray-50'> {/* Changed background to light gray for modern look */}
+    <div className='min-h-dvh bg-gray-50'>
       <div className='fixed top-0 left-0 right-0 z-50'>
         {renderWhatsAppButton()}
         {renderCartButton()}
@@ -378,9 +378,9 @@ function App() {
       <div className='pt-[7.5rem]'>
         <Header />
 
-        <main className='container mx-auto px-3 sm:px-4 py-4 sm:py-6 max-w-6xl'> {/* Increased max-width */}
-          <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8'> {/* Adjusted gap */}
-            <div className='lg:col-span-2 space-y-4'> {/* Added space-y for consistent spacing */}
+        <main className='container mx-auto px-3 sm:px-4 py-4 sm:py-6 max-w-6xl'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8'>
+            <div className='lg:col-span-2 space-y-8'>
               {renderMenuSection(
                 MENU_SECTIONS.DOENER,
                 'Dönergerichte', 
@@ -392,7 +392,7 @@ function App() {
               {renderMenuSection(
                 MENU_SECTIONS.PIZZA,
                 'Pizza',
-                'Alle Pizzen (28 cm) werden mit Tomatensoße und Käse zubereitet.',
+                'Alle Pizzen werden mit Tomatensoße und Käse zubereitet.',
                 pizzas
               )}
 
@@ -417,23 +417,19 @@ function App() {
                 salads
               )}
 
-              <div id={MENU_SECTIONS.DIPS} className='scroll-mt-[6.5rem]'>
-                <MenuSection
-                  title='Dips & Soßen'
-                  items={dips}
-                  bgColor='bg-orange-500'
-                  onAddToOrder={memoizedAddItem}
-                />
-              </div>
+              {renderMenuSection(
+                MENU_SECTIONS.DIPS,
+                'Dips & Soßen',
+                '',
+                dips
+              )}
 
-              <div id={MENU_SECTIONS.GETRAENKE} className='scroll-mt-[6.5rem]'>
-                <MenuSection
-                  title='Getränke'
-                  items={drinks}
-                  bgColor='bg-orange-500'
-                  onAddToOrder={memoizedAddItem}
-                />
-              </div>
+              {renderMenuSection(
+                MENU_SECTIONS.GETRAENKE,
+                'Getränke',
+                '',
+                drinks
+              )}
             </div>
 
             <div

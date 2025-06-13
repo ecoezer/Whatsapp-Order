@@ -2,141 +2,141 @@ import { MenuItem } from '../types';
 
 // Spezialitäten (Doner Dishes)
 export const donerDishes: MenuItem[] = [
-            {
-              id: 80,
-              number: "80",
-              name: "Gyros Teller",
-              description: "mit Zaziki und Krautsalat, dazu Pommes",
-              price: 13.00
-            },
-            {
-              id: 81,
-              number: "81",
-              name: "Gyros Hollandaise",
-              description: "in Sauce Hollandaise mit Käse überbacken",
-              price: 14.00
-            },
-            {
-              id: 82,
-              number: "82",
-              name: "Gyros Topf",
-              description: "mit fr. Champignons in Sauce Hollandaise mit Käse überbacken",
-              price: 14.00
-            },
-            {
-              id: 83,
-              number: "83",
-              name: "Gyros Box",
-              description: "mit Gyros, Pommes, Zaziki und Salat",
-              price: 7.90
-            },
-            {
-              id: 84,
-              number: "84",
-              name: "Spareribs (Rippchen 450g)",
-              description: "mit BBQ Sauce, Pommes und Krautsalat",
-              price: 14.90
-            },
-            {
-              id: 85,
-              number: "85",
-              name: "Currywurst",
-              description: "mit Curry Sauce und Pommes",
-              price: 9.90
-            }
-          ];
-        
- // Dips (Saucen)
+  {
+    id: 80,
+    number: "80",
+    name: "Gyros Teller",
+    description: "mit Zaziki und Krautsalat, dazu Pommes",
+    price: 13.00
+  },
+  {
+    id: 81,
+    number: "81",
+    name: "Gyros Hollandaise",
+    description: "in Sauce Hollandaise mit Käse überbacken",
+    price: 14.00
+  },
+  {
+    id: 82,
+    number: "82",
+    name: "Gyros Topf",
+    description: "mit fr. Champignons in Sauce Hollandaise mit Käse überbacken",
+    price: 14.00
+  },
+  {
+    id: 83,
+    number: "83",
+    name: "Gyros Box",
+    description: "mit Gyros, Pommes, Zaziki und Salat",
+    price: 7.90
+  },
+  {
+    id: 84,
+    number: "84",
+    name: "Spareribs (Rippchen 450g)",
+    description: "mit BBQ Sauce, Pommes und Krautsalat",
+    price: 14.90
+  },
+  {
+    id: 85,
+    number: "85",
+    name: "Currywurst",
+    description: "mit Curry Sauce und Pommes",
+    price: 9.90
+  }
+];
+
+// Dips (Saucen)
 export const dips: MenuItem[] = [
-            {
-              id: 201,
-              number: "201",
-              name: "Mayo",
-              description: "",
-              price: 1.50
-            },
-            {
-              id: 202,
-              number: "202",
-              name: "Ketchup",
-              description: "",
-              price: 1.50
-            },
-            {
-              id: 203,
-              number: "203",
-              name: "Knobi",
-              description: "",
-              price: 1.50
-            },
-            {
-                id: 204,
-                number: "204",
-                name: "Hollandaise",
-                description: "",
-                price: 1.50
-            },
-            {
-              id: 205,
-              number: "205",
-              name: "Chilli",
-              description: "",
-              price: 1.50
-            },
-            {
-              id: 206,
-              number: "206",
-              name: "Tzaziki",
-              description: "",
-              price: 1.50
-            },
-            {
-              id: 207,
-              number: "207",
-              name: "BBQ",
-              description: "",
-              price: 1.50
-            }
-          ];
- // Desserts (Desserts und Süßspeisen)
- export const desserts: MenuItem[] = [
-            {
-              id: 301,
-              number: "D1",
-              name: "Rote Grütze",
-              description: "mit Vanillesauce",
-              price: 4.90
-            },
-            {
-              id: 302,
-              number: "D2",
-              name: "Milchreis",
-              description: "mit Zimt und Zucker",
-              price: 4.90
-            },
-            {
-              id: 303,
-              number: "D3",
-              name: "Schokopudding",
-              description: "mit Vanillesauce",
-              price: 4.90
-            },
-            {
-              id: 304,
-              number: "D4",
-              name: "Oreo Schokoladen Muffin",
-              description: "",
-              price: 3.90
-            },
-            {
-              id: 305,
-              number: "D5",
-              name: "Milka Schokoladen Muffin",
-              description: "",
-              price: 3.90
-            }
-          ];
-      
+  {
+    id: 201,
+    number: "201",
+    name: "Mayo",
+    description: "",
+    price: 1.50
+  },
+  {
+    id: 202,
+    number: "202",
+    name: "Ketchup",
+    description: "",
+    price: 1.50
+  },
+  {
+    id: 203,
+    number: "203",
+    name: "Knobi",
+    description: "",
+    price: 1.50
+  },
+  {
+    id: 204,
+    number: "204",
+    name: "Hollandaise",
+    description: "",
+    price: 1.50
+  },
+  {
+    id: 205,
+    number: "205",
+    name: "Chilli",
+    description: "",
+    price: 1.50
+  },
+  {
+    id: 206,
+    number: "206",
+    name: "Tzaziki",
+    description: "",
+    price: 1.50
+  },
+  {
+    id: 207,
+    number: "207",
+    name: "BBQ",
+    description: "",
+    price: 1.50
+  }
+];
+// Desserts (Desserts und Süßspeisen)
+export const desserts: MenuItem[] = [
+  {
+    id: 301,
+    number: "D1",
+    name: "Rote Grütze",
+    description: "mit Vanillesauce",
+    price: 4.90
+  },
+  {
+    id: 302,
+    number: "D2",
+    name: "Milchreis",
+    description: "mit Zimt und Zucker",
+    price: 4.90
+  },
+  {
+    id: 303,
+    number: "D3",
+    name: "Schokopudding",
+    description: "mit Vanillesauce",
+    price: 4.90
+  },
+  {
+    id: 304,
+    number: "D4",
+    name: "Oreo Schokoladen Muffin",
+    description: "",
+    price: 3.90
+  },
+  {
+    id: 305,
+    number: "D5",
+    name: "Milka Schokoladen Muffin",
+    description: "",
+    price: 3.90
+  }
+];
+
 // Salate (Salads)
 export const salads: MenuItem[] = [
   {
@@ -277,109 +277,70 @@ export const dips2: MenuItem[] = [
 // Getränke (Drinks)
 export const drinks: MenuItem[] = [
   {
-    id: 10,
-    number: "42",
-    name: "Coca-Cola",
-    description: "0,33 L",
-    price: 2.50
+    id: 560,
+    number: 100,
+    name: "Cola, Cola Light, Fanta, Sprite",
+    description: " 0.33L",
+    price:
+      2.20,
+
+
   },
   {
-    id: 11,
-    number: "43",
-    name: "Coca-Cola Zero",
-    description: "0,33 L",
-    price: 2.50
+    id: 561,
+    number: 101,
+    name: "Cappri-Sun Orange",
+    description: " 0.2L",
+    price: 1.00,
+        
   },
   {
-    id: 12,
-    number: "44",
-    name: "Fanta Orange",
-    description: "0,33 L",
-    price: 2.50
+    id: 562,
+    number: 102,
+    name: "Becks oder Herrenhäuser 0.3L",
+    description: "",
+    price: 2.40
+
   },
   {
-    id: 13,
-    number: "45",
-    name: "Sprite",
-    description: "0,33 L",
-    price: 2.50
+    id: 563,
+    number: 103,
+    name: "Chianti (Italienische Rotwein) 0.7L",
+    description: "",
+    price: 9.00
+
   },
   {
-    id: 14,
-    number: "46",
-    name: "Mezzo-mix",
-    description: "0,33 L",
-    price: 2.50
+    id: 564,
+    number: 104,
+    name: "Merlot (Italienische Rotwein)",
+    description: "",
+    price: 11.00
+
   },
   {
-    id: 15,
-    number: "47",
-    name: "Apfelschorle",
-    description: "0,33 L",
-    price: 2.50
+    id: 565,
+    number: 105,
+    name: "Suave (Italienischer Weißwein) 0.7L",
+    description: "",
+    price: 9.00
+
   },
   {
-    id: 16,
-    number: "48",
-    name: "Eistee Zitrone",
-    description: "0,33 L",
-    price: 2.50
+    id: 566,
+    number: 106,
+    name: "Chardonney (Italienische Weißwein) 1L",
+    description: "",
+    price:
+      11.00
+
   },
   {
-    id: 17,
-    number: "49",
-    name: "Eistee Pfirsich",
-    description: "0,33 L",
-    price: 2.50
-  },
-  {
-    id: 18,
-    number: "50",
-    name: "Capri-Sonne",
-    description: "0,20 L",
-    price: 2.00
-  },
-  {
-    id: 19,
-    number: "51",
-    name: "Ayran",
-    description: "0,25 L",
-    price: 2.00
-  },
-  {
-    id: 20,
-    number: "52",
-    name: "Bier",
-    description: "0,33 L",
-    price: 2.50
-  },
-  {
-    id: 21,
-    number: "53",
-    name: "Bier alkoholfrei",
-    description: "0,33 L",
-    price: 2.50
-  },
-  {
-    id: 22,
-    number: "54",
-    name: "Radler",
-    description: "0,33 L",
-    price: 2.50
-  },
-  {
-    id: 23,
-    number: "55",
-    name: "Hefeweizen",
-    description: "0,50 L",
-    price: 3.50
-  },
-  {
-    id: 24,
-    number: "56",
-    name: "Hefeweizen alkoholfrei",
-    description: "0,50 L",
-    price: 3.50
+    id: 567,
+    number: 107,
+    name: "Vodka Gorbatschow 0.7L",
+    description: "",
+    price: 16.00
   }
 ];
 
@@ -451,203 +412,203 @@ export const burgers: MenuItem[] = [
 
 // Pizza
 export const pizzas: MenuItem[] = [
-        {
-          id: 501,
-          number: "00",
-          name: "Wunsch Pizza",
-          description: "mit 4 Zutaten nach Wahl",
-          price: { medium: 9.90, large: 11.90, family: 21.90, mega: 30.90 }
-        },
-        {
-          id: 502,
-          number: "01",
-          name: "Margharita",
-          description: "",
-          price: { medium: 8.90, large: 9.90, family: 17.90, mega: 26.90 }
-        },
-        {
-          id: 503,
-          number: "02",
-          name: "Salami",
-          description: "mit Rindersalami",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 504,
-          number: "03",
-          name: "Schinken",
-          description: "mit Formfleisch-Vorderschinken",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 505,
-          number: "04",
-          name: "Bomba",
-          description: "mit Rindersalami und Peperoni (scharf)",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 506,
-          number: "05",
-          name: "Sucuk",
-          description: "mit Knoblauchwurst, Tomaten und Zwiebeln",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 507,
-          number: "06",
-          name: "Casa",
-          description: "mit Rindersalami, fr. Champignons und Paprika",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 508,
-          number: "07",
-          name: "Mais",
-          description: "mit Formfleisch-Vorderschinken, Mais und Sauce Hollandaise",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 509,
-          number: "08",
-          name: "Monopoly",
-          description: "mit Formfleisch-Vorderschinken, Rindersalami, fr. Champignons und Paprika",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 510,
-          number: "09",
-          name: "Hawaii",
-          description: "mit Formfleisch-Vorderschinken und Ananas",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 511,
-          number: "10",
-          name: "Parma",
-          description: "mit Original Parmaschinken, Tomaten, Mozzarella, Rucola",
-          price: { medium: 10.90, large: 12.90, family: 21.90, mega: 30.90 }
-        },
-        {
-          id: 512,
-          number: "11",
-          name: "Italia",
-          description: "mit Formfleisch-Vorderschinken, Rindersalami, fr. Champignons",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 513,
-          number: "12",
-          name: "Chilli-Cheese",
-          description: "Chilli-Cheese Sauce, Sucuk, Jalapenos und Zwiebeln",
-          price: { medium: 9.90, large: 11.90, family: 19.90, mega: 29.90 }
-        },
-        {
-          id: 514,
-          number: "13",
-          name: "Gyros",
-          description: "mit Gyros und Zwiebeln",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 515,
-          number: "14",
-          name: "Hollandaise",
-          description: "mit Hähnchenbrust, Jalapenos und Sauce Hollandaise",
-          price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
-        },
-        {
-          id: 516,
-          number: "15",
-          name: "Polo",
-          description: "mit Hähnchenbrust, Sucuk, Broccoli, Paprika",
-          price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
-        },
-        {
-          id: 517,
-          number: "16",
-          name: "Palermo",
-          description: "mit Hähnchenbrust, fr. Champignons und Paprika, Jalapenos und Sauce Hollandaise",
-          price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
-        },
-        {
-          id: 518,
-          number: "17",
-          name: "Desperado",
-          description: "mit Hähnchenbrust, fr. Paprika, Zwiebeln und Sauce Hollandaise",
-          price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
-        },
-          {
-          id: 519,
-          number: "18",
-          name: "Tonno",
-          description: "mit Thunfisch und Zwiebeln",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 520,
-          number: "19",
-          name: "Shrimps",
-          description: "mit Shrimps und Knoblauch",
-          price: { medium: 10.90, large: 13.90, family: 21.90, mega: 30.90 }
-        },
-        {
-          id: 521,
-          number: "20",
-          name: "Frutti di Mare",
-          description: "mit Meeresfrüchten und Knoblauch",
-          price: { medium: 10.90, large: 13.90, family: 21.90, mega: 30.90 }
-        },
-                {
-          id: 522,
-          number: "21",
-          name: "Funghi",
-          description: "mit fr.Champignons",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 523,
-          number: "22",
-          name: "Vier Jahreszeiten",
-          description: "mit fr.Champignons, Paprika, Tomaten, Artischocken",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 524,
-          number: "23",
-          name: "Spinat",
-          description: "mit Spinat, Hirtenkäse°, Knoblauch und Zwiebeln",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 525,
-          number: "24",
-          name: "Quattro Formaggi",
-          description: "mit Mozzarella°, Gorgonzola°, Hirtenkäse° und Edamer°",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 526,
-          number: "25",
-          name: "Roma",
-          description: "mit Broccoli, fr.Paprika und Mais",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 527,
-          number: "26",
-          name: "Fitness",
-          description: "mit fr.Tomaten, Mozzarella°, Rucola, Mais",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        },
-        {
-          id: 528,
-          number: "27",
-          name: "Vegetarisch",
-          description: "mit Broccoli, Spinat, Milden Peperoni²,³",
-          price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
-        }
-  
+  {
+    id: 501,
+    number: "00",
+    name: "Wunsch Pizza",
+    description: "mit 4 Zutaten nach Wahl",
+    price: { medium: 9.90, large: 11.90, family: 21.90, mega: 30.90 }
+  },
+  {
+    id: 502,
+    number: "01",
+    name: "Margharita",
+    description: "",
+    price: { medium: 8.90, large: 9.90, family: 17.90, mega: 26.90 }
+  },
+  {
+    id: 503,
+    number: "02",
+    name: "Salami",
+    description: "mit Rindersalami",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 504,
+    number: "03",
+    name: "Schinken",
+    description: "mit Formfleisch-Vorderschinken",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 505,
+    number: "04",
+    name: "Bomba",
+    description: "mit Rindersalami und Peperoni (scharf)",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 506,
+    number: "05",
+    name: "Sucuk",
+    description: "mit Knoblauchwurst, Tomaten und Zwiebeln",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 507,
+    number: "06",
+    name: "Casa",
+    description: "mit Rindersalami, fr. Champignons und Paprika",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 508,
+    number: "07",
+    name: "Mais",
+    description: "mit Formfleisch-Vorderschinken, Mais und Sauce Hollandaise",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 509,
+    number: "08",
+    name: "Monopoly",
+    description: "mit Formfleisch-Vorderschinken, Rindersalami, fr. Champignons und Paprika",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 510,
+    number: "09",
+    name: "Hawaii",
+    description: "mit Formfleisch-Vorderschinken und Ananas",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 511,
+    number: "10",
+    name: "Parma",
+    description: "mit Original Parmaschinken, Tomaten, Mozzarella, Rucola",
+    price: { medium: 10.90, large: 12.90, family: 21.90, mega: 30.90 }
+  },
+  {
+    id: 512,
+    number: "11",
+    name: "Italia",
+    description: "mit Formfleisch-Vorderschinken, Rindersalami, fr. Champignons",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 513,
+    number: "12",
+    name: "Chilli-Cheese",
+    description: "Chilli-Cheese Sauce, Sucuk, Jalapenos und Zwiebeln",
+    price: { medium: 9.90, large: 11.90, family: 19.90, mega: 29.90 }
+  },
+  {
+    id: 514,
+    number: "13",
+    name: "Gyros",
+    description: "mit Gyros und Zwiebeln",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 515,
+    number: "14",
+    name: "Hollandaise",
+    description: "mit Hähnchenbrust, Jalapenos und Sauce Hollandaise",
+    price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
+  },
+  {
+    id: 516,
+    number: "15",
+    name: "Polo",
+    description: "mit Hähnchenbrust, Sucuk, Broccoli, Paprika",
+    price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
+  },
+  {
+    id: 517,
+    number: "16",
+    name: "Palermo",
+    description: "mit Hähnchenbrust, fr. Champignons und Paprika, Jalapenos und Sauce Hollandaise",
+    price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
+  },
+  {
+    id: 518,
+    number: "17",
+    name: "Desperado",
+    description: "mit Hähnchenbrust, fr. Paprika, Zwiebeln und Sauce Hollandaise",
+    price: { medium: 10.90, large: 12.90, family: 20.90, mega: 30.90 }
+  },
+  {
+    id: 519,
+    number: "18",
+    name: "Tonno",
+    description: "mit Thunfisch und Zwiebeln",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 520,
+    number: "19",
+    name: "Shrimps",
+    description: "mit Shrimps und Knoblauch",
+    price: { medium: 10.90, large: 13.90, family: 21.90, mega: 30.90 }
+  },
+  {
+    id: 521,
+    number: "20",
+    name: "Frutti di Mare",
+    description: "mit Meeresfrüchten und Knoblauch",
+    price: { medium: 10.90, large: 13.90, family: 21.90, mega: 30.90 }
+  },
+  {
+    id: 522,
+    number: "21",
+    name: "Funghi",
+    description: "mit fr.Champignons",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 523,
+    number: "22",
+    name: "Vier Jahreszeiten",
+    description: "mit fr.Champignons, Paprika, Tomaten, Artischocken",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 524,
+    number: "23",
+    name: "Spinat",
+    description: "mit Spinat, Hirtenkäse°, Knoblauch und Zwiebeln",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 525,
+    number: "24",
+    name: "Quattro Formaggi",
+    description: "mit Mozzarella°, Gorgonzola°, Hirtenkäse° und Edamer°",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 526,
+    number: "25",
+    name: "Roma",
+    description: "mit Broccoli, fr.Paprika und Mais",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 527,
+    number: "26",
+    name: "Fitness",
+    description: "mit fr.Tomaten, Mozzarella°, Rucola, Mais",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  },
+  {
+    id: 528,
+    number: "27",
+    name: "Vegetarisch",
+    description: "mit Broccoli, Spinat, Milden Peperoni²,³",
+    price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
+  }
+
 ];
 
 // Pide

@@ -62,10 +62,19 @@ const useTimeSlots = () => {
 
 const useOrderCalculation = (orderItems: OrderItem[], orderType: 'pickup' | 'delivery', deliveryZone?: keyof typeof DELIVERY_ZONES) => {
   return useMemo(() => {
-    const subtotal = orderItems.reduce(
+    // Filter out invalid items first
+    const validItems = orderItems.filter(item => 
+      item && 
+      item.menuItem && 
+      typeof item.menuItem.price === 'number' && 
+      typeof item.quantity === 'number'
+    );
+    
+    const subtotal = validItems.reduce(
       (sum, item) => sum + item.menuItem.price * item.quantity,
       0
     );
+    
     const deliveryFee = orderType === 'delivery' && deliveryZone ? DELIVERY_ZONES[deliveryZone].fee : 0;
     const total = subtotal + deliveryFee;
 
@@ -131,47 +140,54 @@ const OrderItemComponent = memo<{
   item: OrderItem;
   onRemove: (id: number) => void;
   onUpdateQuantity: (id: number, quantity: number) => void;
-}>(({ item, onRemove, onUpdateQuantity }) => (
-  <div className="flex items-start justify-between bg-gray-50 p-4 rounded-lg group hover:bg-gray-100 transition-all duration-200">
-    <div className="flex-1">
-      <p className="font-medium text-gray-900">{item.menuItem.name}</p>
-      <p className="text-sm text-gray-600 mt-1">
-        {(item.menuItem.price * item.quantity).toFixed(2).replace('.', ',')} €
-      </p>
-    </div>
-    <div className="flex items-center gap-3">
-      <div className="flex items-center gap-2 bg-white rounded-lg shadow-sm border border-gray-200">
+}>(({ item, onRemove, onUpdateQuantity }) => {
+  // Add safety check for invalid items
+  if (!item || !item.menuItem) {
+    return null;
+  }
+
+  return (
+    <div className="flex items-start justify-between bg-gray-50 p-4 rounded-lg group hover:bg-gray-100 transition-all duration-200">
+      <div className="flex-1">
+        <p className="font-medium text-gray-900">{item.menuItem.name}</p>
+        <p className="text-sm text-gray-600 mt-1">
+          {(item.menuItem.price * item.quantity).toFixed(2).replace('.', ',')} €
+        </p>
+      </div>
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 bg-white rounded-lg shadow-sm border border-gray-200">
+          <button
+            type="button"
+            onClick={() => onUpdateQuantity(item.menuItem.id, Math.max(0, item.quantity - 1))}
+            className="p-1 hover:bg-gray-100 rounded-l-lg transition-colors"
+            aria-label="Menge verringern"
+          >
+            <Minus className="w-4 h-4 text-gray-600" />
+          </button>
+          <span className="w-8 text-center font-medium text-gray-900">
+            {item.quantity}
+          </span>
+          <button
+            type="button"
+            onClick={() => onUpdateQuantity(item.menuItem.id, item.quantity + 1)}
+            className="p-1 hover:bg-gray-100 rounded-r-lg transition-colors"
+            aria-label="Menge erhöhen"
+          >
+            <Plus className="w-4 h-4 text-gray-600" />
+          </button>
+        </div>
         <button
           type="button"
-          onClick={() => onUpdateQuantity(item.menuItem.id, Math.max(0, item.quantity - 1))}
-          className="p-1 hover:bg-gray-100 rounded-l-lg transition-colors"
-          aria-label="Menge verringern"
+          onClick={() => onRemove(item.menuItem.id)}
+          className="text-red-500 hover:text-red-700 transition-colors p-1 hover:bg-red-50 rounded-full"
+          aria-label="Artikel entfernen"
         >
-          <Minus className="w-4 h-4 text-gray-600" />
-        </button>
-        <span className="w-8 text-center font-medium text-gray-900">
-          {item.quantity}
-        </span>
-        <button
-          type="button"
-          onClick={() => onUpdateQuantity(item.menuItem.id, item.quantity + 1)}
-          className="p-1 hover:bg-gray-100 rounded-r-lg transition-colors"
-          aria-label="Menge erhöhen"
-        >
-          <Plus className="w-4 h-4 text-gray-600" />
+          <X className="w-5 h-5" />
         </button>
       </div>
-      <button
-        type="button"
-        onClick={() => onRemove(item.menuItem.id)}
-        className="text-red-500 hover:text-red-700 transition-colors p-1 hover:bg-red-50 rounded-full"
-        aria-label="Artikel entfernen"
-      >
-        <X className="w-5 h-5" />
-      </button>
     </div>
-  </div>
-));
+  );
+});
 
 const FormField = memo<{
   label?: string;
@@ -318,6 +334,16 @@ const OrderForm: React.FC<OrderFormProps> = ({ orderItems, onRemoveItem, onUpdat
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { availableHours, getAvailableMinutes } = useTimeSlots();
 
+  // Filter out invalid items before processing
+  const validOrderItems = useMemo(() => 
+    orderItems.filter(item => 
+      item && 
+      item.menuItem && 
+      typeof item.menuItem.price === 'number' && 
+      typeof item.quantity === 'number'
+    ), [orderItems]
+  );
+
   const {
     control,
     handleSubmit,
@@ -346,7 +372,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ orderItems, onRemoveItem, onUpdat
   const deliveryZone = watch('deliveryZone');
   const deliveryTime = watch('deliveryTime');
   
-  const { subtotal, deliveryFee, total } = useOrderCalculation(orderItems, orderType, deliveryZone);
+  const { subtotal, deliveryFee, total } = useOrderCalculation(validOrderItems, orderType, deliveryZone);
 
   const formatPhone = useCallback((value: string): string => {
     let input = value;
@@ -366,7 +392,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ orderItems, onRemoveItem, onUpdat
     setIsSubmitting(true);
     
     try {
-      const orderDetails = orderItems
+      const orderDetails = validOrderItems
         .map(item => `${item.quantity}x Nr. ${item.menuItem.number} ${item.menuItem.name}`)
         .join('\n');
 
@@ -407,9 +433,9 @@ const OrderForm: React.FC<OrderFormProps> = ({ orderItems, onRemoveItem, onUpdat
     } finally {
       setIsSubmitting(false);
     }
-  }, [orderItems, subtotal, total, isSubmitting]);
+  }, [validOrderItems, subtotal, total, isSubmitting]);
 
-  if (orderItems.length === 0) {
+  if (validOrderItems.length === 0) {
     return <EmptyCart />;
   }
 
@@ -419,12 +445,12 @@ const OrderForm: React.FC<OrderFormProps> = ({ orderItems, onRemoveItem, onUpdat
         <ShoppingCart className="w-6 h-6 text-orange-600" />
         <h3 className="text-xl font-bold text-gray-900">Ihre Bestellung</h3>
         <span className="bg-orange-100 text-orange-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
-          {orderItems.length} Artikel
+          {validOrderItems.length} Artikel
         </span>
       </div>
 
       <div className="space-y-3 max-h-64 overflow-y-auto">
-        {orderItems.map(item => (
+        {validOrderItems.map(item => (
           <OrderItemComponent
             key={item.menuItem.id}
             item={item}

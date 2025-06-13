@@ -106,7 +106,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
                 <div className="text-right">
                   <div className="bg-gray-50 rounded-lg px-4 py-2 group-hover:bg-orange-50 transition-colors duration-300 border border-gray-200 group-hover:border-orange-200">
                     <span className="font-bold text-gray-900 text-lg group-hover:text-orange-700 transition-colors duration-300">
-                      {item.price.toFixed(2).replace('.', ',')} €
+                      {(Number(item.price) || 0).toFixed(2).replace('.', ',')} €
                     </span>
                   </div>
                 </div>

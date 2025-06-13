@@ -98,6 +98,7 @@ export const dips: MenuItem[] = [
     price: 1.50
   }
 ];
+
 // Desserts (Desserts und Süßspeisen)
 export const desserts: MenuItem[] = [
   {
@@ -241,7 +242,6 @@ export const spatzle: MenuItem[] = [
   }
 ];
 
-
 // Dips & Soßen (Dips & Sauces)
 export const dips2: MenuItem[] = [
   {
@@ -278,66 +278,56 @@ export const dips2: MenuItem[] = [
 export const drinks: MenuItem[] = [
   {
     id: 560,
-    number: 100,
+    number: "100",
     name: "Cola, Cola Light, Fanta, Sprite",
     description: " 0.33L",
-    price:
-      2.20,
-
-
+    price: 2.20
   },
   {
     id: 561,
-    number: 101,
+    number: "101",
     name: "Cappri-Sun Orange",
     description: " 0.2L",
-    price: 1.00,
-        
+    price: 1.00
   },
   {
     id: 562,
-    number: 102,
+    number: "102",
     name: "Becks oder Herrenhäuser 0.3L",
     description: "",
     price: 2.40
-
   },
   {
     id: 563,
-    number: 103,
+    number: "103",
     name: "Chianti (Italienische Rotwein) 0.7L",
     description: "",
     price: 9.00
-
   },
   {
     id: 564,
-    number: 104,
+    number: "104",
     name: "Merlot (Italienische Rotwein)",
     description: "",
     price: 11.00
-
   },
   {
     id: 565,
-    number: 105,
+    number: "105",
     name: "Suave (Italienischer Weißwein) 0.7L",
     description: "",
     price: 9.00
-
   },
   {
     id: 566,
-    number: 106,
+    number: "106",
     name: "Chardonney (Italienische Weißwein) 1L",
     description: "",
-    price:
-      11.00
-
+    price: 11.00
   },
   {
     id: 567,
-    number: 107,
+    number: "107",
     name: "Vodka Gorbatschow 0.7L",
     description: "",
     price: 16.00
@@ -410,7 +400,7 @@ export const burgers: MenuItem[] = [
   }
 ];
 
-// Pizza
+// Pizza - Fixed with proper size-based pricing
 export const pizzas: MenuItem[] = [
   {
     id: 501,
@@ -422,7 +412,7 @@ export const pizzas: MenuItem[] = [
   {
     id: 502,
     number: "01",
-    name: "Margharita",
+    name: "Margherita",
     description: "",
     price: { medium: 8.90, large: 9.90, family: 17.90, mega: 26.90 }
   },
@@ -608,7 +598,6 @@ export const pizzas: MenuItem[] = [
     description: "mit Broccoli, Spinat, Milden Peperoni²,³",
     price: { medium: 9.90, large: 11.90, family: 18.90, mega: 28.90 }
   }
-
 ];
 
 // Pide

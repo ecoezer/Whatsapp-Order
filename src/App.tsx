@@ -82,6 +82,11 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Debug: Log when pizzas data changes
+  useEffect(() => {
+    console.log('Pizzas data:', pizzas);
+  }, []);
+
   // =================== MEMOIZED VALUES ===================
   const totalItemsCount = useMemo(() => 
     items.reduce((sum, item) => sum + item.quantity, 0), 
@@ -353,18 +358,21 @@ function App() {
     </button>
   );
 
-  const renderMenuSection = useCallback((id, title, description, items, subTitle) => (
-    <section key={id} id={id} className='scroll-mt-[6.5rem] mb-8'>
-      <MenuSection
-        title={title}
-        description={description}
-        subTitle={subTitle}
-        items={items}
-        bgColor='bg-orange-500'
-        onAddToOrder={memoizedAddItem}
-      />
-    </section>
-  ), [memoizedAddItem]);
+  const renderMenuSection = useCallback((id, title, description, items, subTitle) => {
+    console.log(`Rendering section: ${id} with ${items?.length || 0} items`); // Debug log
+    return (
+      <section key={id} id={id} className='scroll-mt-[6.5rem] mb-8'>
+        <MenuSection
+          title={title}
+          description={description}
+          subTitle={subTitle}
+          items={items}
+          bgColor='bg-orange-500'
+          onAddToOrder={memoizedAddItem}
+        />
+      </section>
+    );
+  }, [memoizedAddItem]);
 
   // =================== MAIN RENDER ===================
   return (

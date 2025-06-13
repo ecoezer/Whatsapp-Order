@@ -18,7 +18,7 @@ const Navigation = () => {
     ['getraenke', '🥤', 'Getränke']
   ];
 
-  // Mobil kontrol
+  // Mobile control
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -46,21 +46,29 @@ const Navigation = () => {
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Intersection observer
+  // Intersection observer - Fixed to work properly
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+            console.log('Section in view:', entry.target.id); // Debug log
             setActiveSection(entry.target.id);
           }
         });
       },
-      { rootMargin: '-50% 0px -50% 0px', threshold: 0.1 }
+      { 
+        rootMargin: '-100px 0px -50% 0px', 
+        threshold: [0.1, 0.3, 0.5] 
+      }
     );
 
-    const sections = document.querySelectorAll('div[id]');
-    sections.forEach((section) => observer.observe(section));
+    // Wait for DOM to be ready
+    setTimeout(() => {
+      const sections = document.querySelectorAll('section[id]');
+      console.log('Found sections:', Array.from(sections).map(s => s.id)); // Debug log
+      sections.forEach((section) => observer.observe(section));
+    }, 100);
 
     return () => observer.disconnect();
   }, []);
@@ -96,8 +104,30 @@ const Navigation = () => {
   };
 
   const handleItemClick = (id) => {
+    console.log('Clicking navigation item:', id); // Debug log
     setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Find the target element
+    const targetElement = document.getElementById(id);
+    console.log('Target element found:', targetElement); // Debug log
+    
+    if (targetElement) {
+      // Calculate scroll position manually
+      const navbarHeight = 140; // Fixed navbar height
+      const extraOffset = 20; // Extra spacing
+      const elementTop = targetElement.offsetTop;
+      const scrollPosition = elementTop - navbarHeight - extraOffset;
+      
+      console.log('Scrolling to position:', scrollPosition); // Debug log
+      
+      // Scroll to the calculated position
+      window.scrollTo({
+        top: Math.max(0, scrollPosition),
+        behavior: 'smooth'
+      });
+    } else {
+      console.error('Element not found with id:', id);
+    }
   };
 
   return (
@@ -113,10 +143,8 @@ const Navigation = () => {
           borderRadius: '20px'
         }}
       >
-
-
         <div className="relative w-full">
-          {/* Sol ok - Sadece mobile'da göster */}
+          {/* Left arrow - Only show on mobile */}
           {isMobile && (
             <button
               onClick={() => scroll('left')}
@@ -130,7 +158,7 @@ const Navigation = () => {
             </button>
           )}
 
-          {/* Sağ ok - Sadece mobile'da göster */}
+          {/* Right arrow - Only show on mobile */}
           {isMobile && (
             <button
               onClick={() => scroll('right')}
@@ -144,7 +172,7 @@ const Navigation = () => {
             </button>
           )}
 
-          {/* Navigation items - Desktop'ta center, mobile'da scroll */}
+          {/* Navigation items - Desktop center, mobile scroll */}
           <div 
             ref={scrollContainerRef}
             className={`flex items-center gap-1 py-2 ${
@@ -199,7 +227,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Alt dekorasyon */}
+        {/* Bottom decoration */}
         <div 
           className="absolute bottom-0 left-0 w-full h-0.5"
           style={{

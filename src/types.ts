@@ -3,7 +3,12 @@ export interface MenuItem {
   number: number | string;
   name: string;
   description?: string;
-  price: number;
+  price: number | {
+    medium?: number;
+    large?: number;
+    family?: number;
+    mega?: number;
+  };
   allergens?: string;
 }
 

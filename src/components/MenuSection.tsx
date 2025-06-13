@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MenuItem } from '../types';
 import { useInView } from 'react-intersection-observer';
 import { Plus } from 'lucide-react';
@@ -25,6 +25,52 @@ const MenuSection: React.FC<MenuSectionProps> = ({
     triggerOnce: true
   });
 
+  const [selectedSizes, setSelectedSizes] = useState<Record<number, string>>({});
+
+  const isPizzaSection = title.toLowerCase().includes('pizza');
+
+  const handleSizeChange = (itemId: number, size: string) => {
+    setSelectedSizes(prev => ({
+      ...prev,
+      [itemId]: size
+    }));
+  };
+
+  const handleAddToOrder = (item: MenuItem) => {
+    if (isPizzaSection && typeof item.price === 'object') {
+      const selectedSize = selectedSizes[item.id] || 'medium';
+      const priceForSize = item.price[selectedSize as keyof typeof item.price];
+      
+      const itemWithSelectedSize: MenuItem = {
+        ...item,
+        name: `${item.name} (${getSizeLabel(selectedSize)})`,
+        price: priceForSize
+      };
+      
+      onAddToOrder(itemWithSelectedSize);
+    } else {
+      onAddToOrder(item);
+    }
+  };
+
+  const getSizeLabel = (size: string): string => {
+    const sizeLabels = {
+      medium: 'Ø 26cm',
+      large: 'Ø 30cm', 
+      family: 'Ø 40cm',
+      mega: 'Ø 50cm'
+    };
+    return sizeLabels[size as keyof typeof sizeLabels] || size;
+  };
+
+  const getCurrentPrice = (item: MenuItem): number => {
+    if (typeof item.price === 'object') {
+      const selectedSize = selectedSizes[item.id] || 'medium';
+      return item.price[selectedSize as keyof typeof item.price] || 0;
+    }
+    return typeof item.price === 'number' ? item.price : 0;
+  };
+
   return (
     <section
       ref={ref}
@@ -32,7 +78,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      {/* Lieferando-style category header */}
+      {/* Category header */}
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-gray-900 mb-1">
           {title}
@@ -46,6 +92,19 @@ const MenuSection: React.FC<MenuSectionProps> = ({
           <p className="text-sm text-gray-600 leading-relaxed">
             {description}
           </p>
+        )}
+        
+        {/* Pizza size info */}
+        {isPizzaSection && (
+          <div className="mt-3 p-3 bg-orange-50 rounded-lg border border-orange-200">
+            <p className="text-sm text-orange-800 font-medium mb-2">🍕 Verfügbare Größen:</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-orange-700">
+              <span>• Medium: Ø 26cm</span>
+              <span>• Large: Ø 30cm</span>
+              <span>• Family: Ø 40cm</span>
+              <span>• Mega: Ø 50cm</span>
+            </div>
+          </div>
         )}
       </div>
 
@@ -96,6 +155,45 @@ const MenuSection: React.FC<MenuSectionProps> = ({
                         {item.description}
                       </p>
                     )}
+
+                    {/* Pizza size selector */}
+                    {isPizzaSection && typeof item.price === 'object' && (
+                      <div className="mt-3">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Größe wählen:
+                        </label>
+                        <div className="grid grid-cols-2 gap-2">
+                          {Object.entries(item.price).map(([size, price]) => (
+                            <label
+                              key={size}
+                              className={`flex items-center justify-between p-2 rounded-lg border cursor-pointer transition-all duration-200 ${
+                                selectedSizes[item.id] === size || (!selectedSizes[item.id] && size === 'medium')
+                                  ? 'border-orange-500 bg-orange-50 text-orange-700'
+                                  : 'border-gray-200 hover:border-orange-300 hover:bg-orange-25'
+                              }`}
+                            >
+                              <div className="flex items-center">
+                                <input
+                                  type="radio"
+                                  name={`size-${item.id}`}
+                                  value={size}
+                                  checked={selectedSizes[item.id] === size || (!selectedSizes[item.id] && size === 'medium')}
+                                  onChange={() => handleSizeChange(item.id, size)}
+                                  className="sr-only"
+                                />
+                                <div className="text-xs">
+                                  <div className="font-medium capitalize">{size}</div>
+                                  <div className="text-gray-500">{getSizeLabel(size)}</div>
+                                </div>
+                              </div>
+                              <span className="text-sm font-bold">
+                                {(price || 0).toFixed(2).replace('.', ',')} €
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -106,7 +204,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
                 <div className="text-right">
                   <div className="bg-gray-50 rounded-lg px-4 py-2 group-hover:bg-orange-50 transition-colors duration-300 border border-gray-200 group-hover:border-orange-200">
                     <span className="font-bold text-gray-900 text-lg group-hover:text-orange-700 transition-colors duration-300">
-                      {(Number(item.price) || 0).toFixed(2).replace('.', ',')} €
+                      {getCurrentPrice(item).toFixed(2).replace('.', ',')} €
                     </span>
                   </div>
                 </div>
@@ -114,7 +212,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
                 {/* Enhanced add button */}
                 <button
                   type="button"
-                  onClick={() => onAddToOrder(item)}
+                  onClick={() => handleAddToOrder(item)}
                   className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 group-hover:rotate-3"
                   title="Zum Warenkorb hinzufügen"
                 >
